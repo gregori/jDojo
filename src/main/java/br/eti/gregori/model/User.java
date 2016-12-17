@@ -1,9 +1,13 @@
 package br.eti.gregori.model;
 
 import lombok.Data;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Set;
 
@@ -13,7 +17,7 @@ import java.util.Set;
 @Data
 @Entity
 //@EntityListeners(AuditingEntityListener.class)
-public class User extends BaseEntity {
+public class User {
     private @Id @GeneratedValue Long id;
 
     private int register;
@@ -24,4 +28,13 @@ public class User extends BaseEntity {
     private String email;
     @OneToMany(mappedBy = "user")
     private Set<UserPermission> userPermission;
+
+    @ManyToOne
+    private Dojo dojo;
+
+    private @CreatedDate LocalDateTime createdDate;
+    private @LastModifiedDate LocalDateTime lastModifiedDate;
+
+    private @CreatedBy String createdBy;
+    private @LastModifiedBy String lastModifiedBy;
 }
