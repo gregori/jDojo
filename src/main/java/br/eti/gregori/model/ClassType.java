@@ -14,16 +14,15 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 /**
- * Created by encef on 17/12/2016.
+ * Created by encef on 18/12/2016.
  */
 @Data
 @Entity
-public class Dojo {
-    private @Id @GeneratedValue Long id;
+public class ClassType {
+    @Id @GeneratedValue
+    private Long id;
     private String name;
-    @OneToMany(mappedBy = "dojo")
-    private Set<User> users;
-    @OneToMany(mappedBy = "dojo")
+    @OneToMany(mappedBy = "classType")
     private Set<Presence> presences;
 
     @CreatedDate

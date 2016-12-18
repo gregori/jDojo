@@ -9,22 +9,24 @@ import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 /**
- * Created by encef on 17/12/2016.
+ * Created by encef on 18/12/2016.
  */
 @Data
 @Entity
-public class Dojo {
-    private @Id @GeneratedValue Long id;
-    private String name;
-    @OneToMany(mappedBy = "dojo")
-    private Set<User> users;
-    @OneToMany(mappedBy = "dojo")
-    private Set<Presence> presences;
+public class BeltRequisite {
+    @Id @GeneratedValue
+    private Long id;
+
+    @ManyToOne
+    private Belt belt;
+    @ManyToOne
+    private ClassType classType;
+
+    private int count;
 
     @CreatedDate
     private LocalDateTime createdDate;

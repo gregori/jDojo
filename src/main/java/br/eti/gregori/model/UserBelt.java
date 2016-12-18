@@ -6,25 +6,33 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.Date;
 
 /**
- * Created by encef on 17/12/2016.
+ * Created by encef on 18/12/2016.
  */
 @Data
 @Entity
-public class Dojo {
-    private @Id @GeneratedValue Long id;
-    private String name;
-    @OneToMany(mappedBy = "dojo")
-    private Set<User> users;
-    @OneToMany(mappedBy = "dojo")
-    private Set<Presence> presences;
+public class UserBelt {
+    @Id @GeneratedValue
+    private Long id;
+
+    @ManyToOne
+    private User user;
+    @ManyToOne
+    private Belt belt;
+
+    @OneToOne
+    private UserBelt lastUserBelt;
+
+    private Date examDate;
+
+    @Lob
+    private String annotattions;
+    @Lob
+    private String remarks;
 
     @CreatedDate
     private LocalDateTime createdDate;

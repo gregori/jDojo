@@ -6,10 +6,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -18,13 +15,19 @@ import java.util.Set;
  */
 @Data
 @Entity
-public class Dojo {
-    private @Id @GeneratedValue Long id;
-    private String name;
-    @OneToMany(mappedBy = "dojo")
-    private Set<User> users;
-    @OneToMany(mappedBy = "dojo")
-    private Set<Presence> presences;
+public class Belt {
+    @Id @GeneratedValue
+    private Long id;
+    private String color;
+    private Long beltTime;
+    @OneToOne
+    private Belt nextBelt;
+
+    @OneToMany(mappedBy = "belt")
+    private Set<BeltRequisite> beltRequisites;
+
+    @OneToMany(mappedBy = "belt")
+    private Set<UserBelt> userBelts;
 
     @CreatedDate
     private LocalDateTime createdDate;

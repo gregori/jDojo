@@ -28,6 +28,10 @@ public class User {
     private String email;
     @OneToMany(mappedBy = "user")
     private Set<UserPermission> userPermission;
+    @OneToMany(mappedBy = "user")
+    private Set<Presence> presences;
+    @OneToMany(mappedBy = "user")
+    private Set<UserBelt> userBelts;
 
     @ManyToOne
     private Dojo dojo;
