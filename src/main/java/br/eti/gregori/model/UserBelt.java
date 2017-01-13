@@ -30,7 +30,7 @@ public class UserBelt {
     private Date examDate;
 
     @Lob
-    private String annotattions;
+    private String annotations;
     @Lob
     private String remarks;
 

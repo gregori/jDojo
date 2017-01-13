@@ -27,7 +27,7 @@ public class User {
     private Long rg;
     private String email;
     @OneToMany(mappedBy = "user")
-    private Set<UserPermission> userPermission;
+    private Set<UserPermission> userPermissions;
     @OneToMany(mappedBy = "user")
     private Set<Presence> presences;
     @OneToMany(mappedBy = "user")

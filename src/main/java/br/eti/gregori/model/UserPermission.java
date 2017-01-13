@@ -19,7 +19,6 @@ public class UserPermission {
     private @Id @GeneratedValue Long id;
     private @ManyToOne User user;
     private @ManyToOne Permission permission;
-    private String verb;
 
     private @CreatedDate LocalDateTime createdDate;
     private @LastModifiedDate LocalDateTime lastModifiedDate;

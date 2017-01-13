@@ -19,8 +19,9 @@ import java.util.Set;
 public class Permission {
     private @Id @GeneratedValue Long id;
     private String route;
+    private String verb;
     @OneToMany(mappedBy = "permission")
-    private Set<UserPermission> userPermission;
+    private Set<UserPermission> userPermissions;
 
     private @CreatedDate LocalDateTime createdDate;
     private @LastModifiedDate LocalDateTime lastModifiedDate;
