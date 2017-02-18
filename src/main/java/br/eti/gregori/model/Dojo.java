@@ -37,6 +37,8 @@ public class Dojo {
     private Set<User> users;
     @OneToMany(mappedBy = "dojo")
     private Set<Presence> presences;
+    @OneToMany(mappedBy = "dojo")
+    private Set<ClassEvent> classes;
 
     @CreatedDate
     private LocalDateTime createdDate;

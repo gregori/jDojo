@@ -5,7 +5,6 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.domain.Persistable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -21,10 +20,6 @@ import java.util.Set;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 public class User {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3262259645284356506L;
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
@@ -55,7 +50,7 @@ public class User {
     @SuppressWarnings("unused")
     private Boolean child;
     @SuppressWarnings("unused")
-    private Boolean active;
+    private Boolean active = true;
     @SuppressWarnings("unused")
     private Long cep;
     @SuppressWarnings("unused")
@@ -87,6 +82,8 @@ public class User {
     private Set<Presence> presences;
     @OneToMany(mappedBy = "user")
     private Set<UserBelt> userBelts;
+    @OneToMany(mappedBy = "instructor")
+    private Set<ClassEvent> classes;
 
     @ManyToOne
     private Dojo dojo;

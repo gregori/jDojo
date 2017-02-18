@@ -5,8 +5,11 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -15,6 +18,7 @@ import java.util.Date;
  */
 @Data
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class UserBelt {
     @Id @GeneratedValue
     private Long id;
@@ -23,6 +27,9 @@ public class UserBelt {
     private User user;
     @ManyToOne
     private Belt belt;
+    
+    @NotNull
+    private boolean current = false;
 
     @OneToOne
     private UserBelt lastUserBelt;

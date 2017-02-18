@@ -5,6 +5,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,13 +16,18 @@ import java.util.Set;
  */
 @Data
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Belt {
     @Id @GeneratedValue
     private Long id;
     @SuppressWarnings("unused")
     private String color;
     @SuppressWarnings("unused")
+    private String colorCode;
+    @SuppressWarnings("unused")
     private Long beltTime;
+    @SuppressWarnings("unused")
+    private boolean child;
     @OneToOne
     private Belt nextBelt;
 

@@ -5,8 +5,10 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -18,13 +20,14 @@ import java.util.Set;
  */
 @Data
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class ClassType {
     @Id @GeneratedValue
     private Long id;
     @SuppressWarnings("unused")
     private String name;
     @OneToMany(mappedBy = "classType")
-    private Set<Presence> presences;
+    private Set<ClassEvent> classEvents;
 
     @CreatedDate
     private LocalDateTime createdDate;
