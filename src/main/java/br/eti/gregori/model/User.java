@@ -5,8 +5,11 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.domain.Persistable;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Set;
@@ -16,16 +19,68 @@ import java.util.Set;
  */
 @Data
 @Entity
-//@EntityListeners(AuditingEntityListener.class)
+@EntityListeners(AuditingEntityListener.class)
 public class User {
-    private @Id @GeneratedValue Long id;
-
-    private int register;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3262259645284356506L;
+	@Id 
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long Id;
+    @SuppressWarnings("unused")
+	private int register;
+    @SuppressWarnings("unused")
     private String name;
+    @SuppressWarnings("unused")
     private Date dob;
+    @SuppressWarnings("unused")
     private Long cpf;
+    @SuppressWarnings("unused")
     private Long rg;
+    @SuppressWarnings("unused")
     private String email;
+    @SuppressWarnings("unused")
+    private String street;
+    @SuppressWarnings("unused")
+    private int number;
+    @SuppressWarnings("unused")
+    private String complement;
+    @SuppressWarnings("unused")
+    private String neighborhood;
+    @SuppressWarnings("unused")
+    private String city;
+    @SuppressWarnings("unused")
+    private String state;
+    @SuppressWarnings("unused")
+    private Boolean child;
+    @SuppressWarnings("unused")
+    private Boolean active;
+    @SuppressWarnings("unused")
+    private Long cep;
+    @SuppressWarnings("unused")
+    private String fatherName;
+    @SuppressWarnings("unused")
+    private String motherName;
+    @SuppressWarnings("unused")
+    private Long responsibleCpf;
+    @SuppressWarnings("unused")
+    private Long responsibleRg;
+    @SuppressWarnings("unused")
+    private String bloodType;
+    @SuppressWarnings("unused")
+    private String phone;
+    @SuppressWarnings("unused")
+    private String mobilePhone;
+    @SuppressWarnings("unused")
+    private String emergencyPhone;
+    @SuppressWarnings("unused")
+    private Date subscribeDate;
+    @SuppressWarnings("unused")
+    private Date anajDate;
+    @SuppressWarnings("unused")
+    private String healthIssues;
+   
     @OneToMany(mappedBy = "user")
     private Set<UserPermission> userPermissions;
     @OneToMany(mappedBy = "user")
@@ -41,4 +96,11 @@ public class User {
 
     private @CreatedBy String createdBy;
     private @LastModifiedBy String lastModifiedBy;
+
+//    @PrePersist
+//    private void prePersist() {
+//    	if (active == null) {
+//    		active = true;
+//    	}
+//    }
 }

@@ -27,6 +27,7 @@ public class UserBelt {
     @OneToOne
     private UserBelt lastUserBelt;
 
+    @SuppressWarnings("unused")
     private Date examDate;
 
     @Lob

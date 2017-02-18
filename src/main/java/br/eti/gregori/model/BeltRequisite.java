@@ -26,6 +26,7 @@ public class BeltRequisite {
     @ManyToOne
     private ClassType classType;
 
+    @SuppressWarnings("unused")
     private int count;
 
     @CreatedDate

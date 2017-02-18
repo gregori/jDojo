@@ -18,7 +18,9 @@ import java.util.Set;
 //@EntityListeners(AuditingEntityListener.class)
 public class Permission {
     private @Id @GeneratedValue Long id;
+    @SuppressWarnings("unused")
     private String route;
+    @SuppressWarnings("unused")
     private String verb;
     @OneToMany(mappedBy = "permission")
     private Set<UserPermission> userPermissions;

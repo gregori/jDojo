@@ -19,8 +19,20 @@ import java.util.Set;
 @Data
 @Entity
 public class Dojo {
-    private @Id @GeneratedValue Long id;
+    private @Id @GeneratedValue Long Id;
+    @SuppressWarnings("unused")
     private String name;
+    @SuppressWarnings("unused")
+    private String street;
+    @SuppressWarnings("unused")
+    private String city;
+    @SuppressWarnings("unused")
+    private String state;
+    @SuppressWarnings("unused")
+    private int number;
+    @SuppressWarnings("unused")
+    private Long cep;
+    
     @OneToMany(mappedBy = "dojo")
     private Set<User> users;
     @OneToMany(mappedBy = "dojo")

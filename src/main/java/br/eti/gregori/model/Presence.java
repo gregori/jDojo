@@ -23,5 +23,6 @@ public class Presence {
     @ManyToOne
     private Dojo dojo;
 
+    @SuppressWarnings("unused")
     private LocalDateTime presenceDate;
 }

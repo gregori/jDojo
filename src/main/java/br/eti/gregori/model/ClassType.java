@@ -21,6 +21,7 @@ import java.util.Set;
 public class ClassType {
     @Id @GeneratedValue
     private Long id;
+    @SuppressWarnings("unused")
     private String name;
     @OneToMany(mappedBy = "classType")
     private Set<Presence> presences;

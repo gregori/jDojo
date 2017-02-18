@@ -18,7 +18,9 @@ import java.util.Set;
 public class Belt {
     @Id @GeneratedValue
     private Long id;
+    @SuppressWarnings("unused")
     private String color;
+    @SuppressWarnings("unused")
     private Long beltTime;
     @OneToOne
     private Belt nextBelt;
