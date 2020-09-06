@@ -70,7 +70,7 @@ public class User {
     @SuppressWarnings("unused")
     private String emergencyPhone;
     @SuppressWarnings("unused")
-    private Date subscribeDate;
+    private Date subscriptionDate;
     @SuppressWarnings("unused")
     private Date anajDate;
     @SuppressWarnings("unused")
